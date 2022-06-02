@@ -3,7 +3,7 @@ try:
 except ImportError:
     import mock
 
-from graphql_ws.gevent import GeventConnectionContext, GeventSubscriptionServer
+from graphql_ws_apollo.gevent import GeventConnectionContext, GeventSubscriptionServer
 
 
 class TestConnectionContext:

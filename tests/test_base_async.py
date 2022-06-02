@@ -5,7 +5,7 @@ import promise
 
 import pytest
 
-from graphql_ws import base, base_async
+from graphql_ws_apollo import base, base_async
 
 pytestmark = pytest.mark.asyncio
 

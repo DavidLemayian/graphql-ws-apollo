@@ -22,7 +22,7 @@ from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
 
 from channels.routing import route_class
-from graphql_ws.django_channels import GraphQLSubscriptionConsumer
+from graphql_ws_apollo.django_channels import GraphQLSubscriptionConsumer
 
 
 def graphiql(request):

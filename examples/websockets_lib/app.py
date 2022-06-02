@@ -1,4 +1,4 @@
-from graphql_ws.websockets_lib import WsLibSubscriptionServer
+from graphql_ws_apollo.websockets_lib import WsLibSubscriptionServer
 from graphql.execution.executors.asyncio import AsyncioExecutor
 from sanic import Sanic, response
 from sanic_graphql import GraphQLView

@@ -8,7 +8,7 @@ except ImportError:
 import pytest
 from graphql.execution.executors.sync import SyncExecutor
 
-from graphql_ws import base, base_sync, constants
+from graphql_ws_apollo import base, base_sync, constants
 
 
 @pytest.fixture

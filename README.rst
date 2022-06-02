@@ -71,7 +71,7 @@ Then just plug into your aiohttp server.
 
 .. code:: python
 
-    from graphql_ws.aiohttp import AiohttpSubscriptionServer
+    from graphql_ws_apollo.aiohttp import AiohttpSubscriptionServer
     from .schema import schema
 
     subscription_server = AiohttpSubscriptionServer(schema)
@@ -102,7 +102,7 @@ implementation. For this example, plug in your Sanic server.
 
 .. code:: python
 
-    from graphql_ws.websockets_lib import WsLibSubscriptionServer
+    from graphql_ws_apollo.websockets_lib import WsLibSubscriptionServer
     from . import schema
 
     app = Sanic(__name__)
@@ -132,7 +132,7 @@ Set up with Django Channels just takes three steps:
 3. Configure the channels router application
 
 First ``pip install channels`` and it to your ``INSTALLED_APPS``. If you
-want graphiQL, install the ``graphql_ws.django`` app before
+want graphiQL, install the ``graphql_ws_apollo.django`` app before
 ``graphene_django`` to serve a graphiQL template that will work with
 websockets:
 
@@ -140,7 +140,7 @@ websockets:
 
     INSTALLED_APPS = [
         "channels",
-        "graphql_ws.django",
+        "graphql_ws_apollo.django",
         "graphene_django",
         # ...
     ]
@@ -154,15 +154,15 @@ Point to your schema in Django settings:
     }
 
 Finally, you can set up channels routing yourself (maybe using
-``graphql_ws.django.routing.websocket_urlpatterns`` in your
+``graphql_ws_apollo.django.routing.websocket_urlpatterns`` in your
 ``URLRouter``), or you can just use one of the preset channels
 applications:
 
 .. code:: python
 
-    ASGI_APPLICATION = 'graphql_ws.django.routing.application'
+    ASGI_APPLICATION = 'graphql_ws_apollo.django.routing.application'
     # or
-    ASGI_APPLICATION = 'graphql_ws.django.routing.auth_application'
+    ASGI_APPLICATION = 'graphql_ws_apollo.django.routing.auth_application'
 
 Run ``./manage.py runserver`` and go to
 `http://localhost:8000/graphql <http://localhost:8000/graphql>`__ to test!
@@ -206,7 +206,7 @@ Then just plug into your Gevent server, for example, Flask:
 .. code:: python
 
     from flask_sockets import Sockets
-    from graphql_ws.gevent import GeventSubscriptionServer
+    from graphql_ws_apollo.gevent import GeventSubscriptionServer
     from schema import schema
 
     subscription_server = GeventSubscriptionServer(schema)
@@ -219,7 +219,7 @@ Then just plug into your Gevent server, for example, Flask:
         return []
 
 You can see a full example here:
-https://github.com/graphql-python/graphql-ws/tree/master/examples/flask_gevent
+https://github.com/davidlemayian/graphql-ws-apollo/tree/master/examples/flask_gevent
 
 Django v1.x
 ~~~~~~~~~~~
@@ -250,7 +250,7 @@ And finally add the channel routes
 .. code:: python
 
     from channels.routing import route_class
-    from graphql_ws.django_channels import GraphQLSubscriptionConsumer
+    from graphql_ws_apollo.django_channels import GraphQLSubscriptionConsumer
 
     channel_routing = [
         route_class(GraphQLSubscriptionConsumer, path=r"^/subscriptions"),

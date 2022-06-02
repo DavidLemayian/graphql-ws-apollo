@@ -3,7 +3,7 @@ import json
 from aiohttp import web
 from schema import schema
 from graphql import format_error
-from graphql_ws.aiohttp import AiohttpSubscriptionServer
+from graphql_ws_apollo.aiohttp import AiohttpSubscriptionServer
 
 from template import render_graphiql
 

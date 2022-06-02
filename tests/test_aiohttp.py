@@ -1,6 +1,6 @@
 try:
     from aiohttp import WSMsgType
-    from graphql_ws.aiohttp import AiohttpConnectionContext, AiohttpSubscriptionServer
+    from graphql_ws_apollo.aiohttp import AiohttpConnectionContext, AiohttpSubscriptionServer
 except ImportError:  # pragma: no cover
     WSMsgType = None
 
@@ -8,7 +8,7 @@ from unittest import mock
 
 import pytest
 
-from graphql_ws.base import ConnectionClosedException
+from graphql_ws_apollo.base import ConnectionClosedException
 
 if_aiohttp_installed = pytest.mark.skipif(
     WSMsgType is None, reason="aiohttp is not installed"

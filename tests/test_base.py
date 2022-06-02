@@ -7,8 +7,8 @@ import json
 
 import pytest
 
-from graphql_ws import base
-from graphql_ws.base_sync import SubscriptionObserver
+from graphql_ws_apollo import base
+from graphql_ws_apollo.base_sync import SubscriptionObserver
 
 
 def test_not_implemented():

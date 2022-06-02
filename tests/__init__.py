@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-"""Unit test package for graphql_ws."""
+"""Unit test package for graphql_ws_apollo."""

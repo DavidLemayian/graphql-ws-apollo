@@ -85,17 +85,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/graphql_ws.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/graphql_ws_apollo.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/graphql_ws.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/graphql_ws_apollo.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/graphql_ws"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/graphql_ws"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/graphql_ws_apollo"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/graphql_ws_apollo"
 	@echo "# devhelp"
 
 epub:

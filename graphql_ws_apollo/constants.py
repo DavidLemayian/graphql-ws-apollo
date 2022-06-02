@@ -1,4 +1,4 @@
-GRAPHQL_WS = "graphql-ws"
+GRAPHQL_WS = "graphql-ws-apollo"
 WS_PROTOCOL = GRAPHQL_WS
 
 GQL_CONNECTION_INIT = "connection_init"  # Client -> Server

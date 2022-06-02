@@ -25,8 +25,8 @@ settings.configure(
 )
 django.setup()
 
-from graphql_ws.constants import GQL_CONNECTION_ACK, GQL_CONNECTION_INIT  # noqa: E402
-from graphql_ws.django_channels import (  # noqa: E402
+from graphql_ws_apollo.constants import GQL_CONNECTION_ACK, GQL_CONNECTION_INIT  # noqa: E402
+from graphql_ws_apollo.django_channels import (  # noqa: E402
     DjangoChannelConnectionContext,
     DjangoChannelSubscriptionServer,
     GraphQLSubscriptionConsumer,

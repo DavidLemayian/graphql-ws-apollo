@@ -8,7 +8,7 @@ from weakref import WeakSet
 from graphql.execution.executors.asyncio import AsyncioExecutor
 from promise import Promise
 
-from graphql_ws import base
+from .base import BaseConnectionContext, BaseSubscriptionServer
 
 from .constants import GQL_COMPLETE, GQL_CONNECTION_ACK, GQL_CONNECTION_ERROR, GQL_DATA
 from .observable_aiter import setup_observable_extension
@@ -62,7 +62,7 @@ async def resolve(
             await asyncio.wait(children)
 
 
-class BaseAsyncConnectionContext(base.BaseConnectionContext, ABC):
+class BaseAsyncConnectionContext(BaseConnectionContext, ABC):
     def __init__(self, ws, request_context=None):
         super().__init__(ws, request_context=request_context)
         self.pending_tasks = WeakSet()
@@ -108,7 +108,7 @@ class BaseAsyncConnectionContext(base.BaseConnectionContext, ABC):
                 pass
 
 
-class BaseAsyncSubscriptionServer(base.BaseSubscriptionServer, ABC):
+class BaseAsyncSubscriptionServer(BaseSubscriptionServer, ABC):
     graphql_executor = AsyncioExecutor
 
     def __init__(self, schema, keep_alive=True, loop=None):

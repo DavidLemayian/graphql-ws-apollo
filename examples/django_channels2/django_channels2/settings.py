@@ -5,7 +5,7 @@ SECRET_KEY = "0%1c709jhmggqhk&=tci06iy+%jedfxpcoai69jd8wjzm+k2f0"
 DEBUG = True
 
 
-INSTALLED_APPS = ["channels", "graphql_ws.django", "graphene_django"]
+INSTALLED_APPS = ["channels", "graphql_ws_apollo.django", "graphene_django"]
 
 TEMPLATES = [
     {
@@ -26,7 +26,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "django_channels2.urls"
-ASGI_APPLICATION = "graphql_ws.django.routing.application"
+ASGI_APPLICATION = "graphql_ws_apollo.django.routing.application"
 
 
 CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}

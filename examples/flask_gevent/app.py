@@ -2,7 +2,7 @@ from flask import Flask, make_response
 from flask_graphql import GraphQLView
 from flask_sockets import Sockets
 
-from graphql_ws.gevent import GeventSubscriptionServer
+from graphql_ws_apollo.gevent import GeventSubscriptionServer
 
 from schema import schema
 from template import render_graphiql

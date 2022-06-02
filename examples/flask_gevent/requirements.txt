@@ -1,4 +1,4 @@
-graphql_ws
+graphql_ws_apollo
 gevent
 flask
 flask_graphql
