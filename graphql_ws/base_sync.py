@@ -2,7 +2,7 @@ from graphql.execution.executors.sync import SyncExecutor
 from rx import Observable, Observer
 
 from .base import BaseSubscriptionServer
-from .constants import GQL_COMPLETE, GQL_CONNECTION_ACK, GQL_CONNECTION_ERROR
+from .constants import GQL_COMPLETE, GQL_CONNECTION_ACK, GQL_CONNECTION_ERROR, GQL_DATA
 
 
 class BaseSyncSubscriptionServer(BaseSubscriptionServer):
@@ -29,7 +29,7 @@ class BaseSyncSubscriptionServer(BaseSubscriptionServer):
             self.send_error(connection_context, op_id, e, GQL_CONNECTION_ERROR)
             connection_context.close(1011)
 
-    def on_start(self, connection_context, op_id, params):
+    def on_start(self, connection_context, op_id, params, data_op_type=GQL_DATA):
         # Attempt to unsubscribe first in case we already have a subscription
         # with this id.
         connection_context.unsubscribe(op_id)
@@ -45,6 +45,7 @@ class BaseSyncSubscriptionServer(BaseSubscriptionServer):
                     self.send_execution_result,
                     self.send_error,
                     self.send_message,
+                    data_op_type,
                 )
             )
             connection_context.register_operation(op_id, disposable)
@@ -56,20 +57,21 @@ class BaseSyncSubscriptionServer(BaseSubscriptionServer):
 
 class SubscriptionObserver(Observer):
     def __init__(
-        self, connection_context, op_id, send_execution_result, send_error, send_message
+        self, connection_context, op_id, send_execution_result, send_error, send_message, data_op_type=GQL_DATA
     ):
         self.connection_context = connection_context
         self.op_id = op_id
         self.send_execution_result = send_execution_result
         self.send_error = send_error
         self.send_message = send_message
+        self.data_op_type = data_op_type
 
     def on_next(self, value):
         if isinstance(value, Exception):
             send_method = self.send_error
         else:
             send_method = self.send_execution_result
-        send_method(self.connection_context, self.op_id, value)
+        send_method(self.connection_context, self.op_id, value, self.data_op_type)
 
     def on_completed(self):
         self.send_message(self.connection_context, self.op_id, GQL_COMPLETE)

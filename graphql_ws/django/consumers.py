@@ -9,11 +9,18 @@ from .subscriptions import subscription_server
 class GraphQLSubscriptionConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
         self.connection_context = None
-        if WS_PROTOCOL in self.scope["subprotocols"]:
+        protocol = None
+
+        for p in ["graphql-ws", "graphql-transport-ws"]:
+            if p in self.scope["subprotocols"]:
+                protocol = p
+                break
+
+        if protocol is not None:
             self.connection_context = await subscription_server.handle(
                 ws=self, request_context=self.scope
             )
-            await self.accept(subprotocol=WS_PROTOCOL)
+            await self.accept(subprotocol=protocol)
         else:
             await self.close()
 

@@ -8,8 +8,10 @@ from .constants import (
     GQL_CONNECTION_INIT,
     GQL_CONNECTION_TERMINATE,
     GQL_DATA,
+    GQL_DATA_APOLLO,
     GQL_ERROR,
     GQL_START,
+    GQL_START_APOLLO,
     GQL_STOP,
 )
 
@@ -84,10 +86,11 @@ class BaseSubscriptionServer(object):
         elif op_type == GQL_CONNECTION_TERMINATE:
             return self.on_connection_terminate(connection_context, op_id)
 
-        elif op_type == GQL_START:
+        elif op_type == GQL_START or op_type == GQL_START_APOLLO:
             assert isinstance(payload, dict), "The payload must be a dict"
             params = self.get_graphql_params(connection_context, payload)
-            return self.on_start(connection_context, op_id, params)
+            data_op_type = GQL_DATA if op_type == GQL_START else GQL_DATA_APOLLO
+            return self.on_start(connection_context, op_id, params, data_op_type)
 
         elif op_type == GQL_STOP:
             return self.on_stop(connection_context, op_id)
@@ -140,9 +143,9 @@ class BaseSubscriptionServer(object):
         assert message, "You need to send at least one thing"
         return message
 
-    def send_execution_result(self, connection_context, op_id, execution_result):
+    def send_execution_result(self, connection_context, op_id, execution_result, data_op_type=GQL_DATA):
         result = self.execution_result_to_dict(execution_result)
-        return self.send_message(connection_context, op_id, GQL_DATA, result)
+        return self.send_message(connection_context, op_id, data_op_type, result)
 
     def execution_result_to_dict(self, execution_result):
         result = OrderedDict()

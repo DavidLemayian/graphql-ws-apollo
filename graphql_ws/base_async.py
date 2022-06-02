@@ -10,7 +10,7 @@ from promise import Promise
 
 from graphql_ws import base
 
-from .constants import GQL_COMPLETE, GQL_CONNECTION_ACK, GQL_CONNECTION_ERROR
+from .constants import GQL_COMPLETE, GQL_CONNECTION_ACK, GQL_CONNECTION_ERROR, GQL_DATA
 from .observable_aiter import setup_observable_extension
 
 setup_observable_extension()
@@ -140,7 +140,7 @@ class BaseAsyncSubscriptionServer(base.BaseSubscriptionServer, ABC):
             await self.send_error(connection_context, op_id, e, GQL_CONNECTION_ERROR)
             await connection_context.close(1011)
 
-    async def on_start(self, connection_context, op_id, params):
+    async def on_start(self, connection_context, op_id, params, data_op_type=GQL_DATA):
         # Attempt to unsubscribe first in case we already have a subscription
         # with this id.
         await connection_context.unsubscribe(op_id)
@@ -156,7 +156,7 @@ class BaseAsyncSubscriptionServer(base.BaseSubscriptionServer, ABC):
                     if not connection_context.has_operation(op_id):
                         break
                     await self.send_execution_result(
-                        connection_context, op_id, single_result
+                        connection_context, op_id, single_result, data_op_type
                     )
             except Exception as e:
                 await self.send_error(connection_context, op_id, e)
@@ -165,7 +165,7 @@ class BaseAsyncSubscriptionServer(base.BaseSubscriptionServer, ABC):
                 if is_awaitable(execution_result):
                     execution_result = await execution_result
                 await self.send_execution_result(
-                    connection_context, op_id, execution_result
+                    connection_context, op_id, execution_result, data_op_type
                 )
             except Exception as e:
                 await self.send_error(connection_context, op_id, e)
@@ -183,7 +183,7 @@ class BaseAsyncSubscriptionServer(base.BaseSubscriptionServer, ABC):
     async def on_operation_complete(self, connection_context, op_id):
         pass
 
-    async def send_execution_result(self, connection_context, op_id, execution_result):
+    async def send_execution_result(self, connection_context, op_id, execution_result, data_op_type=GQL_DATA):
         # Resolve any pending promises
         await resolve(execution_result.data)
-        await super().send_execution_result(connection_context, op_id, execution_result)
+        await super().send_execution_result(connection_context, op_id, execution_result, data_op_type=data_op_type)
