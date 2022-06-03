@@ -183,7 +183,7 @@
             ],
             "version": "==2.0.1"
         },
-        "graphql-ws": {
+        "graphql-ws-apollo": {
             "editable": true,
             "path": "./../.."
         },

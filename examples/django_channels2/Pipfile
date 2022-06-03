@@ -6,7 +6,7 @@ name = "pypi"
 [dev-packages]
 
 [packages]
-graphql-ws = {path = "./../..", editable = true}
+graphql-ws-apollo = {path = "./../..", editable = true}
 channels = "==2.*"
 graphene-django = "*"
 

@@ -23,11 +23,11 @@ Python 2 application servers:
 Installation instructions
 =========================
 
-For instaling graphql-ws, just run this command in your shell
+For instaling graphql-ws-apollo, just run this command in your shell
 
 .. code:: bash
 
-    pip install graphql-ws
+    pip install graphql-ws-apollo
 
 
 Examples
@@ -91,7 +91,7 @@ Then just plug into your aiohttp server.
     web.run_app(app, port=8000)
 
 You can see a full example here:
-https://github.com/graphql-python/graphql-ws/tree/master/examples/aiohttp
+https://github.com/davidlemayian/graphql-ws-apollo/tree/master/examples/aiohttp
 
 
 websockets compatible servers
