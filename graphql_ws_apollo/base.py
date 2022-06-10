@@ -13,6 +13,7 @@ from .constants import (
     GQL_START,
     GQL_START_APOLLO,
     GQL_STOP,
+    GQL_STOP_APOLLO,
 )
 
 
@@ -92,7 +93,7 @@ class BaseSubscriptionServer(object):
             data_op_type = GQL_DATA if op_type == GQL_START else GQL_DATA_APOLLO
             return self.on_start(connection_context, op_id, params, data_op_type)
 
-        elif op_type == GQL_STOP:
+        elif op_type == GQL_STOP or op_type == GQL_STOP_APOLLO:
             return self.on_stop(connection_context, op_id)
 
         else:

@@ -1,6 +1,6 @@
-==========
-GraphQL WS
-==========
+=================
+GraphQL WS Apollo
+=================
 
 Websocket backend for GraphQL subscriptions.
 

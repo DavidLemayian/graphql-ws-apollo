@@ -17,3 +17,4 @@ GQL_DATA_APOLLO = "next"  # Server -> Client
 GQL_ERROR = "error"  # Server -> Client
 GQL_COMPLETE = "complete"  # Server -> Client
 GQL_STOP = "stop"  # Client -> Server
+GQL_STOP_APOLLO = "complete" # Client -> Server
