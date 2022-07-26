@@ -1,4 +1,7 @@
 from graphene_django.settings import graphene_settings
+
+import autobahn
+
 from ..base_async import BaseAsyncConnectionContext, BaseAsyncSubscriptionServer
 from ..observable_aiter import setup_observable_extension
 
@@ -11,9 +14,12 @@ class ChannelsConnectionContext(BaseAsyncConnectionContext):
         self.socket_closed = False
 
     async def send(self, data):
-        if self.closed:
-            return
-        await self.ws.send_json(data)
+        try:
+            if self.closed:
+                return
+            await self.ws.send_json(data)
+        except autobahn.exception.Disconnected:
+            await self.close(code=1011)
 
     @property
     def closed(self):
