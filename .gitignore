@@ -70,3 +70,6 @@ target/
 .vscode/
 
 *.sqlite3
+
+.envrc
+.pypirc

@@ -13,7 +13,7 @@ Python 3 application servers, using asyncio:
       (via `websockets <https://github.com/aaugustin/websockets/>`__ library)
     * `Django v2+`_
 
-Python 2 application servers:
+Python 2 application servers (Not Supported):
 
     * `Gevent compatible servers`_ such as Flask
     * `Django v1.x`_

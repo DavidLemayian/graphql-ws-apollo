@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-"""Top-level package for GraphQL WS."""
+"""Top-level package for GraphQL WS Apollo."""
 
-__author__ = """Syrus Akbary"""
-__email__ = "me@syrusakbary.com"
-__version__ = "0.4.4.2"
+__author__ = """Syrus Akbary, David Lemayian"""
+__email__ = "me@syrusakbary.com, david@davidlemayian.org"
+__version__ = "0.4.4.3"

@@ -87,10 +87,10 @@ dist: clean ## builds source and wheel package
 	ls -l dist
 
 dist-upload: dist ## uploads source and wheel package
-	python -m twine upload dist/*
+	python -m twine upload --config-file ./.pypirc dist/*
 
 dist-upload-test: dist ## uploads source and wheel package to testpypi
-	python -m twine upload --repository testpypi dist/*
+	python -m twine upload --config-file ./.pypirc --repository testpypi dist/*
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
