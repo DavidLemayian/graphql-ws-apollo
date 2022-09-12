@@ -4,8 +4,7 @@ History
 
 0.4.4.4 (2022-09-08)
 ====================
-- EOL. No longer maintained. Use https://strawberry.rocks instead
-
+- EOL. No longer maintained. Use straweberry instead
 
 0.4.4.3 (2022-09-08)
 ====================
