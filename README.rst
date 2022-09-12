@@ -1,8 +1,12 @@
 =================
-GraphQL WS Apollo
+GraphQL WS Apollo   **DEPRECATED**
 =================
 
-Websocket backend for GraphQL subscriptions.
+This package [is dead](https://github.com/graphql-python/graphene-django/issues/1324). Please [use Strawberry instead](https://strawberry.rocks/)
+
+----
+
+Websocket backend for GraphQL subscriptions fixed to work with Apollo Client.
 
 Supports the following application servers:
 

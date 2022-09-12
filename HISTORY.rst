@@ -2,9 +2,14 @@
 History
 =======
 
+0.4.4.4 (2022-09-08)
+====================
+- EOL. No longer maintained. Use https://strawberry.rocks instead
+
+
 0.4.4.3 (2022-09-08)
 ====================
-- Bump graphql-core to 3.0
+- Bump graphql-core to 3.0 (doesn't work)
 
 0.4.4.2 (2022-07-27)
 ====================

@@ -4,4 +4,4 @@
 
 __author__ = """Syrus Akbary, David Lemayian"""
 __email__ = "me@syrusakbary.com, david@davidlemayian.org"
-__version__ = "0.4.4.3"
+__version__ = "0.4.4.4"
